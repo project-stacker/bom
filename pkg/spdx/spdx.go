@@ -34,12 +34,13 @@ import (
 )
 
 const (
-	defaultDocumentAuthor   = "Kubernetes Release Managers (release-managers@kubernetes.io)"
-	archiveManifestFilename = "manifest.json"
-	spdxTempDir             = "spdx"
-	spdxLicenseData         = spdxTempDir + "/licenses"
-	spdxLicenseDlCache      = spdxTempDir + "/downloadCache"
-	gitIgnoreFile           = ".gitignore"
+	defaultDocumentAuthor       = "Kubernetes Release Managers (release-managers@kubernetes.io)"
+	defaultDocumentOrganization = "Kubernetes Release Engineering"
+	archiveManifestFilename     = "manifest.json"
+	spdxTempDir                 = "spdx"
+	spdxLicenseData             = spdxTempDir + "/licenses"
+	spdxLicenseDlCache          = spdxTempDir + "/downloadCache"
+	gitIgnoreFile               = ".gitignore"
 
 	// Consts of some SPDX expressions
 	NONE            = "NONE"
@@ -57,8 +58,10 @@ CiAgICB8X3wgICAgICAgICAgICAgICAK`
 
 var (
 	// https://spdx.github.io/spdx-spec/3-package-information/#32-package-spdx-identifier
-	validIDCharsRe          = regexp.MustCompile(`[^a-zA-Z0-9-.]+`)
-	SupportedHashAlgorithms = []string{"SHA1", "SHA256", "SHA25"}
+	validIDCharsRe              = regexp.MustCompile(`[^a-zA-Z0-9-.]+`)
+	SupportedHashAlgorithms     = []string{"SHA1", "SHA256", "SHA25"}
+	DefaultDocumentAuthor       = defaultDocumentAuthor
+	DefaultDocumentOrganization = defaultDocumentOrganization
 )
 
 type SPDX struct {
