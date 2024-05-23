@@ -5,7 +5,7 @@ OS ?= linux
 ARCH ?= amd64
 
 BINDIR := bin
-BINARY := stacker-bom-${OS}-${ARCH}
+BINARY := bom-${OS}-${ARCH}
 
 .PHONY: binary
 binary:
