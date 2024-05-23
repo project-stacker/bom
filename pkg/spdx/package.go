@@ -423,6 +423,8 @@ func (p *Package) Draw(builder *strings.Builder, o *DrawingOptions, depth int, s
 		if rel.Peer != nil {
 			name := rel.Peer.SPDXID()
 			etype := ""
+			cksum1 := ""
+			cksum256 := ""
 
 			if !o.OnlyIDs {
 				if _, ok := rel.Peer.(*Package); ok {
@@ -433,9 +435,11 @@ func (p *Package) Draw(builder *strings.Builder, o *DrawingOptions, depth int, s
 				if _, ok := rel.Peer.(*File); ok {
 					name = rel.Peer.(*File).Name
 					etype = "FILE"
+					cksum1 = "sha1:" + rel.Peer.(*File).Checksum["SHA1"]
+					cksum256 = "sha256:" + rel.Peer.(*File).Checksum["SHA256"]
 				}
 			}
-			line += fmt.Sprintf("%s %s %s", rel.Type, etype, name)
+			line += fmt.Sprintf("%s %s %s %s %s", rel.Type, etype, name, cksum1, cksum256)
 		} else {
 			line += fmt.Sprintf("%s %s", rel.Type, rel.PeerReference)
 		}
